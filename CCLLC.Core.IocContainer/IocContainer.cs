@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Reflection;
 
@@ -11,8 +12,8 @@ namespace CCLLC.Core
     public class IocContainer : IIocContainer
 
     {        
-        private readonly IDictionary<Type, ContractModifiers> registeredTypes = new Dictionary<Type, ContractModifiers>();
-        private readonly IDictionary<Type, object> instances = new Dictionary<Type, object>();        
+        private readonly IDictionary<Type, ContractModifiers> registeredTypes = new ConcurrentDictionary<Type, ContractModifiers>();
+        private readonly IDictionary<Type, object> instances = new ConcurrentDictionary<Type, object>();        
         
         /// <summary>
         /// The number of items registered in the container.
